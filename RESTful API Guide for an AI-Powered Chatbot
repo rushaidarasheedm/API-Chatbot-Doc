@@ -1,0 +1,99 @@
+# RESTful API Guide for an AI-Powered Chatbot
+
+## Introduction
+This API allows developers to integrate AI-powered chatbot functionalities into their applications. The API supports natural language understanding, intent detection, and dynamic responses.
+
+---
+
+## Base URL
+```plaintext
+https://api.chatbotai.com/v1/
+```
+
+## Authentication
+All requests must include an API key.
+```plaintext
+Authorization: Bearer YOUR_API_KEY
+```
+
+---
+
+## Endpoints
+
+### 1. Send a Message
+**Request:**
+```http
+POST /message
+```
+**Request Headers:**
+```plaintext
+Content-Type: application/json
+Authorization: Bearer YOUR_API_KEY
+```
+**Request Body (JSON):**
+```json
+{
+  "session_id": "123456789",
+  "user_message": "Hello! How are you?"
+}
+```
+**Response (JSON):**
+```json
+{
+  "bot_response": "I'm doing well! How can I help you today?",
+  "confidence": 0.98
+}
+```
+
+---
+
+### 2. Retrieve Chat History
+**Request:**
+```http
+GET /history/{session_id}
+```
+**Response (JSON):**
+```json
+{
+  "session_id": "123456789",
+  "messages": [
+    { "user": "Hello!", "bot": "Hi! How can I assist you?" },
+    { "user": "What's the weather?", "bot": "It's sunny today!" }
+  ]
+}
+```
+
+---
+
+## XML-Based Response Example
+For clients that prefer XML format:
+```xml
+<response>
+  <bot_response>I'm doing well! How can I help you today?</bot_response>
+  <confidence>0.98</confidence>
+</response>
+```
+
+---
+
+## Error Handling
+| Error Code | Description |
+|------------|-------------|
+| 400 | Bad Request - Invalid input |
+| 401 | Unauthorized - Missing API Key |
+| 500 | Server Error - Try again later |
+
+---
+
+## Rate Limits
+Each API key is limited to 1000 requests per day.
+
+---
+
+## Conclusion
+This API enables developers to integrate chatbot capabilities easily. For further questions, visit our [Developer Portal](https://api.chatbotai.com/docs).
+
+---
+
+## License
+MIT License. See LICENSE file for details.
